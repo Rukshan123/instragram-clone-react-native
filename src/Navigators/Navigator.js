@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Login from "../screens/Login"
 import Register from "../screens/Registration"
 import Home from "../screens/Home"
+import Social from "../components/socialMediaLogin"
 
 
 const Stack = createStackNavigator();
@@ -24,6 +25,7 @@ export default class App extends Component {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Social" component={Social} />
         </Stack.Navigator>
       </NavigationContainer>
      

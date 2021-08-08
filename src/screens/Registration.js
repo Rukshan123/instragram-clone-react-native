@@ -1,158 +1,72 @@
-import React, {Component } from 'react'
-import { Text, View, StyleSheet, Image, TextInput } from 'react-native'
+import * as React from 'react';
+import {
+  NativeBaseProvider,
+  Box,
+  Text,
+  Heading,
+  VStack,
+  FormControl,
+  Input,
+  Link,
+  Button,
+  Icon,
+  IconButton,
+  HStack,
+  Divider
+} from 'native-base';
+import Social from '../components/socialMediaLogin'
 
+export default function Register ({navigation}) {
 
-export default class Register extends Component {
-   
-    render() {
+ return (
+      <NativeBaseProvider>
+      <Box
+        safeArea
+        flex={1}
+        p={2}
+        w="90%"
+        mx='auto'
+      >
+            <Heading textAlign="center" mt={5} size="lg" color='primary.500'>
+                Register
+              </Heading>
 
-         
-        const {navigate} = this.props.navigation
-        return (
-            <View style={styles.container}>
-                <Image style = {styles.topmImg} source ={require('../images/mike-petrucci-c9FQyqIECds-unsplash.jpg')}/>               
-                <Text style = {styles.text01}> Kariyawasam Store </Text>  
-               
-            
-            <View style={{
-                flexDirection:"row",
-                alignItems:"center",
-                marginHorizontal:22,
-                borderWidth:2,
-                marginTop:50,
-                paddingHorizontal:10,
-                borderColor:"#00716F",
-                borderRadius:23,
-                paddingVertical:2,
-            }}>
-            
-          
-            <TextInput
-            placeholder = "Enter Email"
-            placeholderTextColor = "#00716F"
-          
-            style={{paddingHorizontal:10,color:"black"}}
-            />
-               
-               
-            </View>
+        <VStack space={2} mt={18}>
+        <FormControl mt={4} >
+                  <FormControl.Label   _text={{color: 'muted.700', fontSize: 'md', fontWeight: 700,}} >
+                      Email  
+                  </FormControl.Label>
+                  <Input style={{ borderWidth:2}} size="sm"  placeholder="Enter Email Here" placeholderTextColor = "blueGray.400" />
+                </FormControl>
+                <FormControl mt={4} >
+          <FormControl.Label  _text={{color: 'muted.700', fontSize: 'md', fontWeight: 700}}>
+                      Password
+                  </FormControl.Label>
+                  <Input style={{ borderWidth:2}} size="sm"  placeholder="Enter Password Here" placeholderTextColor = "blueGray.400" type="password" />
+          </FormControl>
+          <FormControl mt={4} >
+          <FormControl.Label  _text={{color: 'muted.700', fontSize: 'md', fontWeight: 700}}>
+                     Confirm Password
+                  </FormControl.Label>
+                  <Input style={{ borderWidth:2}} size="sm"  placeholder="Confirm Password Here" placeholderTextColor = "blueGray.400" type="password" />
+          </FormControl>
+          <VStack  space={2}  mt={5}>
+          <Button color="#00716F" _text={{color: 'white',fontWeight:'700' }}>
+                    SignUp
+                </Button>
+                <HStack justifyContent="center"  > 
+                  <Link mt={2} _text={{ color: 'cyan.500', bold: true, fontSize: 'sm' }} onPress={() => navigation.navigate("Login")}>
+                   Back
+                  </Link>
+                </HStack>
 
-            <View style={{
-                flexDirection:"row",
-                alignItems:"center",
-                marginHorizontal:22,
-                borderWidth:2,
-                marginTop:15,
-                paddingHorizontal:10,
-                borderColor:"#00716F",
-                borderRadius:23,
-                paddingVertical:2
+                <Text mt={2} fontSize='sm' color='muted.700' fontWeight={600}  >or through social media </Text>
 
+                <Social />
 
-            }}>
-            
-           
-            <TextInput
-            secureTextEntry
-            placeholder = "Password"
-            placeholderTextColor = "#00716F"
-            
-            style={{paddingHorizontal:10,color:"black"}}
-            />
-               
-               
-            </View>
-
-            <View style={{
-                flexDirection:"row",
-                alignItems:"center",
-                marginHorizontal:22,
-                borderWidth:2,
-                marginTop:15,
-                paddingHorizontal:10,
-                borderColor:"#00716F",
-                borderRadius:23,
-                paddingVertical:2
-
-
-            }}>
-            
-           
-            <TextInput
-            secureTextEntry
-            placeholder = "Cofirm Password"
-            placeholderTextColor = "#00716F"
-            style={{paddingHorizontal:10,color:"black"}}
-            />
-               
-               
-            </View>
-
-
-
-            <View style={{
-               marginHorizontal:22,
-               alignItems:"center",
-               justifyContent:"center",
-               marginTop:30,
-               backgroundColor:"#00716F",
-               paddingVertical:10,
-               borderRadius:23
-
-
-            }}>
-            
-            <Text
-            style={{
-                fontFamily:"semibold",
-                color:"white",
-                fontWeight:"700"
-            }}
-            >Register</Text>
-      
-            </View>
-            <Text 
-            
-            onPress = { () =>navigate('Login')}
-            
-            style={{
-                fontFamily:"semibold",
-                color:"#00716F",
-                fontWeight:"700",
-                alignSelf:"center",
-                paddingVertical:25,
-             }}>
-             Back
-            </Text>
-            
-            </View>
-
-            
-            
-        )
-    }
+          </VStack>
+        </VStack>
+      </Box>
+    </NativeBaseProvider>
+  );
 }
-
-const styles = StyleSheet.create({
-
-    text01:{
-        color:'black',
-        fontWeight:"700",
-        marginTop:30,
-        fontSize:35,
-      textAlign:"center"
-    },
-    container:{
-        backgroundColor:"#FFF",
-        height:"100%",
-        padding: 10,
-    },
-
-   topmImg:{
-    borderRadius: 20,
-    width:"100%",
-    height:"30%",
-
-   }
-
-})

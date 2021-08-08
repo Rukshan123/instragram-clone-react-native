@@ -1,6 +1,21 @@
-import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import * as React  from 'react'
+import {  StyleSheet, Image } from 'react-native'
+
+import Social from '../components/socialMediaLogin'
+
+import {
+    NativeBaseProvider,
+    Box,
+    Text,
+    Heading,
+    VStack,
+    FormControl,
+    Input,
+    Link,
+    Button,
+    HStack,
+  } from 'native-base';
+import { TextInput } from 'react-native-gesture-handler';
 
 export default function Login ({navigation}) {
 
@@ -10,140 +25,81 @@ export default function Login ({navigation}) {
 
 
         return (
-            <View style={styles.container}>
-                <Image style={styles.topmImg} source={require('../images/mike-petrucci-c9FQyqIECds-unsplash.jpg')} />
-                <Text style={styles.text01}> Kariyawasam Store </Text>
 
+            <NativeBaseProvider>
+            <Box
+              safeArea
+              flex={1}
+              p={1}
+              w="92%"
+              mx='auto'
+            >
+               
+                <Image
+          style={{
+              width:"100%",
+              height:"22%"
+            }}
+          source={require('../images/justin-lim-JKjBsuKpatU-unsplash.jpg')}
+        />
+                
+                
 
-                <View style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    marginHorizontal: 22,
-                    borderWidth: 2,
-                    marginTop: 30,
-                    paddingHorizontal: 10,
-                    borderColor: "#00716F",
-                    borderRadius: 23,
-                    paddingVertical: 2,
-                }}>
+              <Heading textAlign="center" mt={4} fontSize={30} color='primary.500'>
+                Kariyawasam Store
+              </Heading>
+              
+      
+              <VStack space={2} mt={5}>
+                <FormControl >
+                  <FormControl.Label   _text={{color: 'muted.700', fontSize: 'md', fontWeight: 700,}} >
+                      Email  
+                  </FormControl.Label>
+                  <Input style={{ borderWidth:2}} size="sm"  placeholder="Enter Email Here" placeholderTextColor = "blueGray.400" />
+                </FormControl>
+                <FormControl mb={5}>
+                  <FormControl.Label  _text={{color: 'muted.700', fontSize: 'md', fontWeight: 700}}>
+                      Password
+                  </FormControl.Label>
+                  <Input style={{ borderWidth:2}} size="sm"  placeholder="Enter Password Here" placeholderTextColor = "blueGray.400" type="password" />
+                  <Link
+                    _text={{ fontSize: 'xs', fontWeight: '700', color:'cyan.500' }}
+                    alignSelf="flex-end"
+                    mt={1}
+                  >
+                    Forget Password?
+                  </Link>
+                </FormControl>
+                <VStack  space={2}>
+                <Button color="#00716F" _text={{color: 'white',fontWeight:'700' }}>
+                    Login
+                </Button>
 
-                    <FontAwesome5 name={'envelope-square'} size={25} color="#00716F" />
-                    <TextInput
-                        placeholder="Enter Email Here"
+                <HStack justifyContent="center"  > 
+                  <Link mt={2} _text={{ color: 'cyan.500', bold: true, fontSize: 'sm' }} onPress={() => navigation.navigate("Register")}>
+                    Create new account
+                  </Link>
+                </HStack>
 
-                        style={{ paddingHorizontal: 10, color: "black" }}
-                    />
+                <Text mt={2} fontSize='sm' color='muted.700' fontWeight={700}  >or through social media </Text>
 
-
-                </View>
-
-                <View style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    marginHorizontal: 22,
-                    borderWidth: 2,
-                    marginTop: 15,
-                    paddingHorizontal: 10,
-                    borderColor: "#00716F",
-                    borderRadius: 23,
-                    paddingVertical: 2
-
-
-                }}>
-
-                    <FontAwesome5 name={'lock'} size={25} color="#00716F" />
-                    <TextInput
-                        secureTextEntry
-                        placeholder="Enter Password Here"
-
-                        style={{ paddingHorizontal: 10, color: "black" }}
-                    />
-
-
-                </View>
-
-
-                <View
-                    style={{
-                        marginHorizontal: 22,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginTop: 30,
-                        backgroundColor: "#00716F",
-                        paddingVertical: 12,
-                        borderRadius: 23
-
-
-                    }}>
-
-                    <Text
-                        style={{
-                            fontFamily: "semibold",
-                            color: "white",
-                            fontWeight: "700"
-                        }}
-                    >Login</Text>
-
-                </View>
-
-                <Text
-
-                    onPress={() => navigation.navigate("Register")}
-
-                    style={{
-                        fontFamily: "semibold",
-                        color: "#00716F",
-                        fontWeight: "700",
-                        alignSelf: "center",
-                        paddingVertical: 25,
-                    }}>
-                    Sign Up
-                </Text>
-
-                <Text
-
-
-
-                    style={{
-                        fontSize: 16,
-                        fontFamily: "semibold",
-                        color: "black",
-                        fontWeight: "700",
-                        alignSelf: "center",
-                        paddingVertical: 5,
-                    }}>
-                    or through social media
-                </Text>
-
-
-            </View>
-
+                     <Social/>
+      
+                </VStack>
+                
+              </VStack>
+            </Box>
+          </NativeBaseProvider>
 
 
         )
 
 }
 
-const styles = StyleSheet.create({
 
-    text01: {
-        color: 'black',
-        fontWeight: "700",
-        marginTop: 20,
-        fontSize: 35,
-        textAlign: "center"
-    },
-    container: {
-        backgroundColor: "#FFF",
-        height: "100%",
-        padding: 10,
-    },
 
-    topmImg: {
-        borderRadius: 20,
-        width: "100%",
-        height: "30%",
+ const styles = StyleSheet.create({
 
-    }
+     
 
-})
+ })
