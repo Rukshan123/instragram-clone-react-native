@@ -60,7 +60,7 @@ export default function Register ({navigation}) {
                   </Link>
                 </HStack>
 
-                <Text mt={2} fontSize='sm' color='muted.700' fontWeight={600}  >or through social media </Text>
+                <Text mt={1} fontSize='sm' color='muted.700' fontWeight={700}  >or through social media </Text>
 
                 <Social />
 

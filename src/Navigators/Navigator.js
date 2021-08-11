@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Login from "../screens/Login"
-import Register from "../screens/Registration"
-import Home from "../screens/Home"
+import LoginAndRegister from "../screens/LoginAndRegister"
 import Social from "../components/socialMediaLogin"
+import Home from "../screens/Home"
+import DrawNavigator from '../components/DrawNavigator';
 
 
 const Stack = createStackNavigator();
@@ -21,11 +21,11 @@ export default class App extends Component {
         screenOptions={{
           headerShown: false
         }}
-         initialRouteName="Login">
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Home" component={Home} />
+         initialRouteName="LoginAndRegister">
+          <Stack.Screen name="LoginAndRegister" component={LoginAndRegister} />
           <Stack.Screen name="Social" component={Social} />
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="DrawNavigator" component={DrawNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
      

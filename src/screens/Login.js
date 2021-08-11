@@ -71,7 +71,7 @@ export default function Login ({navigation}) {
                   </Link>
                 </FormControl>
                 <VStack  space={2}>
-                <Button color="#00716F" _text={{color: 'white',fontWeight:'700' }}>
+                <Button  onPress={() => navigation.navigate("Home")} color="#00716F" _text={{color: 'white',fontWeight:'700' }}>
                     Login
                 </Button>
 

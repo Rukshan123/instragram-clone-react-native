@@ -12,7 +12,7 @@ export default class Social extends Component {
 
     render() {
         return (
-            <HStack justifyContent="center" alignItem='center' mt={3}>
+            <HStack justifyContent="center" alignItem='center' mt={2}>
             <IconButton
             style={{
                 marginHorizontal:10,
@@ -22,7 +22,7 @@ export default class Social extends Component {
             }}
               variant='unstyled'
               startIcon={
-                <FontAwesome5 name={'facebook'} size={50} color="#1457C2" />
+                <FontAwesome5 name={'facebook'} size={45} color="#1457C2" />
               }
             />
             <IconButton
@@ -34,7 +34,7 @@ export default class Social extends Component {
             }}
               variant='link'
               startIcon={
-                <FontAwesome5 name={'google'} size={50} color="#B8232D" />
+                <FontAwesome5 name={'google'} size={45} color="#B8232D" />
               }
             />
             <IconButton
@@ -46,7 +46,7 @@ export default class Social extends Component {
             }}
               variant='unstyled'
               startIcon={
-                <FontAwesome5 name={'github'} size={50} color="black" />
+                <FontAwesome5 name={'github'} size={45} color="black" />
               }
             />
             </HStack>
