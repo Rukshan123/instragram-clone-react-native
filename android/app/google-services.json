@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "514038534654",
+    "project_id": "react-native-pos-26b38",
+    "storage_bucket": "react-native-pos-26b38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514038534654:android:8873114233a4bdf76e70af",
+        "android_client_info": {
+          "package_name": "com.posfrontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514038534654-mb4dp2c89o4pvcmqfvqg9nsm1p66clq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYIVrc8iQbc79Xehtnr3Kj9G7YwZjMxIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514038534654-mb4dp2c89o4pvcmqfvqg9nsm1p66clq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,34 +1,30 @@
-import React, { Component } from 'react'
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import LoginAndRegister from "../screens/LoginAndRegister"
-import Social from "../components/socialMediaLogin"
-import Home from "../screens/Home"
-import DrawNavigator from '../components/DrawNavigator';
+import React, {Component} from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
 
+import Login from '../screens/Login';
+import LandingPage from '../components/authentication/LandingPage';
+import Register from '../components/authentication/Register';
 
 const Stack = createStackNavigator();
 
 const stackNavigatorOptions = {
-  headerShown : false
-}
+  headerShown: false,
+};
 
 export default class App extends Component {
   render() {
     return (
       <NavigationContainer>
         <Stack.Navigator
-        screenOptions={{
-          headerShown: false
-        }}
-         initialRouteName="LoginAndRegister">
-          <Stack.Screen name="LoginAndRegister" component={LoginAndRegister} />
-          <Stack.Screen name="Social" component={Social} />
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="DrawNavigator" component={DrawNavigator} />
+          screenOptions={{
+            headerShown: false,
+          }}
+          initialRouteName="LandingPage">
+          <Stack.Screen name="LandingPage" component={LandingPage} />
+          <Stack.Screen name="Register" component={Register} />
         </Stack.Navigator>
       </NavigationContainer>
-     
-    )
+    );
   }
 }
