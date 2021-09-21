@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "514038534654-3mbqlg4aalmb8qch9ahs47lr61fc5qim.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.posfrontend",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "514038534654-mb4dp2c89o4pvcmqfvqg9nsm1p66clq9.apps.googleusercontent.com",
           "client_type": 3
         }

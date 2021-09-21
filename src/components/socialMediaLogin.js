@@ -10,9 +10,6 @@ export default class Social extends Component {
         <IconButton
           style={{
             marginHorizontal: 10,
-            //     borderWidth:3,
-            // borderColor:"#00716F",
-            borderRadius: 25,
           }}
           variant="unstyled"
           startIcon={
@@ -22,8 +19,7 @@ export default class Social extends Component {
         <IconButton
           style={{
             marginHorizontal: 10,
-            //     borderWidth:3,
-            // borderColor:"#00716F",
+
             borderRadius: 25,
           }}
           variant="link"
