@@ -14,6 +14,7 @@ import {
   Input,
   Button,
 } from 'native-base';
+import {Firebase} from 'react-native-firebase';
 
 export default class Register extends Component {
   constructor(props) {
@@ -32,7 +33,12 @@ export default class Register extends Component {
     const {email, password, name} = this.state;
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(result => {
+        firestore().collection('users').doc(auth().currentUser.uid).set({
+          name,
+          email,
+        });
+
         console.log('User account created & signed in!');
         this.setState({
           email: '',
@@ -59,6 +65,7 @@ export default class Register extends Component {
           <VStack space={2}>
             <FormControl mt={2}>
               <Input
+                color="white"
                 style={{borderWidth: 2}}
                 size="sm"
                 placeholder="Name"
@@ -68,6 +75,7 @@ export default class Register extends Component {
             </FormControl>
             <FormControl mt={4}>
               <Input
+                color="white"
                 style={{borderWidth: 2}}
                 size="sm"
                 placeholder="Email"
@@ -77,6 +85,7 @@ export default class Register extends Component {
             </FormControl>
             <FormControl mt={4}>
               <Input
+                color="white"
                 style={{borderWidth: 2}}
                 size="sm"
                 placeholder="Password"

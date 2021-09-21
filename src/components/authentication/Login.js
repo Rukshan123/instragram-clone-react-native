@@ -77,13 +77,8 @@ export default class Login extends Component {
           <VStack space={2}>
             <FormControl mt={2}></FormControl>
             <FormControl mt={4}>
-              <FormControl.Label
-                _text={{
-                  color: 'muted.700',
-                  fontSize: 'md',
-                  fontWeight: 700,
-                }}></FormControl.Label>
               <Input
+                color="white"
                 style={{borderWidth: 2}}
                 size="sm"
                 placeholder="Email"
@@ -92,13 +87,8 @@ export default class Login extends Component {
               />
             </FormControl>
             <FormControl mt={4}>
-              <FormControl.Label
-                _text={{
-                  color: 'muted.700',
-                  fontSize: 'md',
-                  fontWeight: 700,
-                }}></FormControl.Label>
               <Input
+                color="white"
                 style={{borderWidth: 2}}
                 size="sm"
                 placeholder="Password"
