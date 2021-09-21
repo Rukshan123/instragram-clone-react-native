@@ -40,9 +40,10 @@ export default class App extends Component {
     }
 
     return (
-      <View style={{flex: 1, justifyContent: 'center'}}>
-        <Text>Loaded</Text>
-      </View>
+      // <View style={{flex: 1, justifyContent: 'center'}}>
+      //   <Text>Loaded</Text>
+      // </View>
+      <Navigator />
     );
   }
 }

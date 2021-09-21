@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
-import {Text, View, TextInput} from 'react-native';
-import {firebase} from '@react-native-firebase/auth';
+import {Text, View, TextInput, StyleSheet} from 'react-native';
+import firestore, {firebase} from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
+import {useNavigation} from '@react-navigation/native';
+import {Divider} from 'react-native-elements';
+
 import {
   NativeBaseProvider,
   Box,
@@ -26,94 +30,100 @@ export default class Register extends Component {
 
   onSignUp() {
     const {email, password, name} = this.state;
-    firebase
-      .auth()
+    auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(result => {
-        firebase
-          .firestore()
-          .collection('users')
-          .doc(firebase.auth().currentUser.uid)
-          .set({
-            name,
-            email,
-          });
-        console.log(result);
+      .then(() => {
+        console.log('User account created & signed in!');
+        this.setState({
+          email: '',
+          password: '',
+        });
       })
       .catch(error => {
-        console.log(error);
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+
+        console.error(error);
       });
   }
   render() {
     return (
       <NativeBaseProvider>
-        <ScrollView>
-          <Box safeArea flex={1} p={2} w="95%" mx="auto">
-            <VStack space={2}>
-              <FormControl mt={2}>
-                <FormControl.Label
-                  _text={{
-                    color: 'muted.700',
-                    fontSize: 'md',
-                    fontWeight: 700,
-                  }}>
-                  Name
-                </FormControl.Label>
-                <Input
-                  style={{borderWidth: 2}}
-                  size="sm"
-                  placeholder="Name"
-                  placeholderTextColor="blueGray.400"
-                  onChangeText={name => this.setState({name})}
-                />
-              </FormControl>
-              <FormControl mt={4}>
-                <FormControl.Label
-                  _text={{
-                    color: 'muted.700',
-                    fontSize: 'md',
-                    fontWeight: 700,
-                  }}>
-                  Email
-                </FormControl.Label>
-                <Input
-                  style={{borderWidth: 2}}
-                  size="sm"
-                  placeholder="Email"
-                  placeholderTextColor="blueGray.400"
-                  onChangeText={email => this.setState({email})}
-                />
-              </FormControl>
-              <FormControl mt={4}>
-                <FormControl.Label
-                  _text={{
-                    color: 'muted.700',
-                    fontSize: 'md',
-                    fontWeight: 700,
-                  }}>
-                  Password
-                </FormControl.Label>
-                <Input
-                  style={{borderWidth: 2}}
-                  size="sm"
-                  placeholder="Password"
-                  secureTextEntry={true}
-                  placeholderTextColor="blueGray.400"
-                  onChangeText={password => this.setState({password})}
-                />
-              </FormControl>
+        <Box style={styles.container} p={10} w="100%" h="100%" mx="auto">
+          <Text style={styles.RegText}>Register </Text>
+          <VStack space={2}>
+            <FormControl mt={2}>
+              <Input
+                style={{borderWidth: 2}}
+                size="sm"
+                placeholder="Name"
+                placeholderTextColor="blueGray.400"
+                onChangeText={name => this.setState({name})}
+              />
+            </FormControl>
+            <FormControl mt={4}>
+              <Input
+                style={{borderWidth: 2}}
+                size="sm"
+                placeholder="Email"
+                placeholderTextColor="blueGray.400"
+                onChangeText={email => this.setState({email})}
+              />
+            </FormControl>
+            <FormControl mt={4}>
+              <Input
+                style={{borderWidth: 2}}
+                size="sm"
+                placeholder="Password"
+                secureTextEntry={true}
+                placeholderTextColor="blueGray.400"
+                onChangeText={password => this.setState({password})}
+              />
+            </FormControl>
 
-              <Button
-                onPress={() => this.onSignUp()}
-                title="Sign Up"
-                colorScheme="teal"
-                mr={2}>
-                Save
-              </Button>
-            </VStack>
-          </Box>
-        </ScrollView>
+            <Button
+              style={{marginTop: 20}}
+              onPress={() => this.onSignUp()}
+              title="Sign Up"
+              colorScheme="teal"
+              mr={2}>
+              Register
+            </Button>
+            <Divider style={{marginTop: 10}} orientation="horizontal" />
+            <Text
+              onPress={() => this.props.navigation.navigate('Login')}
+              style={{
+                fontSize: 15,
+                color: 'white',
+                textAlign: 'center',
+                marginTop: 7,
+                fontWeight: '700',
+              }}>
+              Back
+            </Text>
+          </VStack>
+        </Box>
       </NativeBaseProvider>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+
+    backgroundColor: 'black',
+  },
+  RegText: {
+    marginBottom: 15,
+    color: 'white',
+    fontSize: 32,
+    fontFamily: 'italic',
+    textAlign: 'center',
+  },
+});
