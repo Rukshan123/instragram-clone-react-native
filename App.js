@@ -6,6 +6,7 @@ import LandingPage from './src/components/authentication/LandingPage';
 import Register from './src/components/authentication/Register';
 import Login from './src/components/authentication/Login';
 import MainScreen from './src/components/main';
+import AddScreen from './src/components/main/Add';
 
 import {firebase} from '@react-native-firebase/auth';
 import 'react-native-gesture-handler';
@@ -61,7 +62,11 @@ export default class App extends Component {
               headerShown: false,
             }}
             initialRouteName="Login">
-            <Stack.Screen name="LandingPage" component={LandingPage} />
+            <Stack.Screen
+              name="LandingPage"
+              component={LandingPage}
+              options={{headerShown: false}}
+            />
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Login" component={Login} />
           </Stack.Navigator>
@@ -71,7 +76,19 @@ export default class App extends Component {
 
     return (
       <Provider store={store}>
-        <MainScreen />
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Main">
+            <Stack.Screen
+              name="Main"
+              options={{headerShown: false}}
+              component={MainScreen}
+            />
+            <Stack.Screen name="Add" component={AddScreen} />
+            {/* <Stack.Screen name="Add" component={AddScreen} navigation={this.props.navigation}/>
+            <Stack.Screen name="Save" component={SaveScreen} navigation={this.props.navigation}/>
+            <Stack.Screen name="Comment" component={CommentScreen} navigation={this.props.navigation}/> */}
+          </Stack.Navigator>
+        </NavigationContainer>
       </Provider>
     );
   }
